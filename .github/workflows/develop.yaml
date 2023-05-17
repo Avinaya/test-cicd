@@ -1,4 +1,4 @@
-name: Print Hello
+name: Develop Workflow
 
 on:
   push:
@@ -6,9 +6,23 @@ on:
       - develop
 
 jobs:
-  print_hello:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Hello
-        run: echo "hello"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Lint
+        run: echo "Running lint step"
+
+      - name: Test
+        run: echo "Running test step"
+
+      - name: Build
+        env:
+          KUBE_CONFIG: ${{ secrets.DEV_KUBECONFIG }}
+        run: echo "The value of DEV_KUBECONFIG secret is ${{ KUBE_CONFIG }}"
+
+      - name: Deploy
+        run: echo "Running deploy step"
