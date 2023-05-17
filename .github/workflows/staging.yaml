@@ -3,7 +3,7 @@ name: Staging Workflow
 on:
   push:
     branches:
-      - release/*
+      - release/**
 
 jobs:
   lint:
