@@ -3,10 +3,10 @@ name: Lint Workflow
 on:
   push:
     branches:
-      - feature/*
-      - fix/*
-      - refactor/*
-      - test/*
+      - feature/**
+      - fix/**
+      - refactor/**
+      - test/**
 
 jobs:
   lint:
