@@ -7,6 +7,7 @@ on:
 
 jobs:
   lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -16,6 +17,7 @@ jobs:
         run: echo "Running lint step"
 
   test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -25,6 +27,7 @@ jobs:
         run: echo "Running test step"
 
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -37,6 +40,7 @@ jobs:
           echo "The value of DEV_KUBECONFIG secret is $KUBE_CONFIG"
 
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
