@@ -2,11 +2,11 @@ name: Release Workflow
 
 on:
   workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Select a release branch'
-        required: true
-        default: 'release/'
+    # inputs:
+    #   branch:
+    #     description: 'Select a release branch'
+    #     required: true
+    #     default: 'release/'
 
 jobs:
   promote:
@@ -14,21 +14,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
 
       - name: Get Latest Commit
         id: get_commit
         run: |
-          selected_branch="${{ github.event.inputs.branch }}"
+          selected_branch="${{ github.branch }}"
           if [[ ! "$selected_branch" =~ ^release/.*$ ]]; then
             echo "Error: Invalid branch name. Please select a branch starting with 'release/'."
             exit 1
           fi
-          
-          latest_commit=$(curl -s "https://api.github.com/repos/${{ github.repository }}/commits/${selected_branch}" | jq -r '.sha')
-
-          echo "::set-output name=latest_commit::$latest_commit"
-
-      - name: Print Latest Commit
-        run: echo "The latest commit hash for the selected branch is ${{ steps.get_commit.outputs.latest_commit }}"
+  
+          echo "${{github.sha}}"
