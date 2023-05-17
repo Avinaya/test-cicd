@@ -6,9 +6,8 @@ on:
       - develop
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -16,14 +15,32 @@ jobs:
       - name: Lint
         run: echo "Running lint step"
 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Test
         run: echo "Running test step"
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Build
         env:
           KUBE_CONFIG: ${{ secrets.DEV_KUBECONFIG }}
         run: |
           echo "The value of DEV_KUBECONFIG secret is $KUBE_CONFIG"
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Deploy
         run: echo "Running deploy step"
