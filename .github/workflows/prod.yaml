@@ -6,6 +6,7 @@ on:
       branch:
         description: 'Select a release branch'
         required: true
+        default: 'release/'
 
 jobs:
   get_latest_commit:
