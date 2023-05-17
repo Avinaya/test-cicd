@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - feature/*
-      - fixes/*
+      - fix/*
       - refactor/*
       - test/*
 
@@ -21,6 +21,7 @@ jobs:
 
   test:
     name: Test
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
