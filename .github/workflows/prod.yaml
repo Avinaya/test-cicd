@@ -18,8 +18,8 @@ jobs:
       - name: Get Latest Commit
         id: get_commit
         run: |
-          selected_branch="${{ github.branch }}"
-          if [[ ! $selected_branch == *"release/"* ]]; then
+          selected_branch=${GITHUB_REF}
+          if [[ ! ${GITHUB_REF} == *"release/"* ]]; then
             echo "Error: Invalid branch name. Please select a branch starting with 'release/'."
             exit 1
           fi
