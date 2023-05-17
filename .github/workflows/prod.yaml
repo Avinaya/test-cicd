@@ -9,8 +9,8 @@ on:
         default: 'release/'
 
 jobs:
-  get_latest_commit:
-    name: Latest commit
+  promote:
+    name: Promote to Prod
     runs-on: ubuntu-latest
 
     steps:
