@@ -9,6 +9,7 @@ on:
 
 jobs:
   get_latest_commit:
+    name: Latest commit
     runs-on: ubuntu-latest
 
     steps:
