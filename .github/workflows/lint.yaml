@@ -1,0 +1,30 @@
+name: Lint Workflow
+
+on:
+  push:
+    branches:
+      - feature/*
+      - fixes/*
+      - refactor/*
+      - test/*
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Lint
+        run: echo "Running lint step"
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Test
+        run: echo "Running test step"
