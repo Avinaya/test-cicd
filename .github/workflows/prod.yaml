@@ -19,7 +19,7 @@ jobs:
         id: get_commit
         run: |
           selected_branch="${{ github.branch }}"
-          if [[ ! "$selected_branch" =~ ^release/.*$ ]]; then
+          if [[ ! $selected_branch == *"release/"* ]]; then
             echo "Error: Invalid branch name. Please select a branch starting with 'release/'."
             exit 1
           fi
