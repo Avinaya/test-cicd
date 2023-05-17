@@ -1,4 +1,4 @@
-name: Prod Workflow
+name: Release Workflow
 
 on:
   workflow_dispatch:
@@ -6,7 +6,6 @@ on:
       branch:
         description: 'Select a release branch'
         required: true
-        default: 'release/'
 
 jobs:
   get_latest_commit:
@@ -20,6 +19,11 @@ jobs:
         id: get_commit
         run: |
           selected_branch="${{ github.event.inputs.branch }}"
+          if [[ ! "$selected_branch" =~ ^release/.*$ ]]; then
+            echo "Error: Invalid branch name. Please select a branch starting with 'release/'."
+            exit 1
+          fi
+          
           latest_commit=$(curl -s "https://api.github.com/repos/${{ github.repository }}/commits/${selected_branch}" | jq -r '.sha')
 
           echo "::set-output name=latest_commit::$latest_commit"
