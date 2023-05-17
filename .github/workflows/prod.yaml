@@ -1,15 +1,14 @@
-name: Release Workflow
+name: 4. Promote to Live
 
 on:
   workflow_dispatch:
 
 jobs:
   promote:
-    name: Promote to Prod
+    name: Promote to live
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Get Latest Commit
         id: get_commit
         run: |
