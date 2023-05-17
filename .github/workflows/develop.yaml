@@ -22,7 +22,8 @@ jobs:
       - name: Build
         env:
           KUBE_CONFIG: ${{ secrets.DEV_KUBECONFIG }}
-        run: echo "The value of DEV_KUBECONFIG secret is ${{ KUBE_CONFIG }}"
+        run: | 
+               echo "The value of DEV_KUBECONFIG secret is ${{ KUBE_CONFIG }}"
 
       - name: Deploy
         run: echo "Running deploy step"
